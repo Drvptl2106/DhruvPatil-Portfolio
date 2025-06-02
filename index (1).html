@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhruv Patil | Data Science Portfolio</title>
+    <meta name="description" content="Portfolio of Dhruv Patil – Business Analyst | Data Science | Python | Machine Learning | Tableau">
+    <meta property="og:title" content="Dhruv Patil - Data Scientist & Business Analyst">
+    <meta property="og:description" content="Explore my journey in data science, business analytics, and strategic consulting">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Enhanced project card hover effect */
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            z-index: 10;
+        }
+        
+        /* Improved scrolling behavior */
+        .projects-container {
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 20px;
+            gap: 1.5rem;
+            padding: 1rem 20px 2rem;
+        }
+        
+        .project-card {
+            scroll-snap-align: center;
+        }
+        
+        /* Better scrolling experience */
+        .projects-scroller {
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Adjusted container width to prevent partial visibility */
+        .projects-container {
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            min-width: 300px;
+            max-width: 320px;
+        }
+        /* End of enhancements */
+
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --dark-primary: #1a1d29;
+            --dark-secondary: #252945;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-light: #718096;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7fafc;
+            --bg-tertiary: #edf2f7;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --success: #48bb78;
+            --warning: #ed8936;
+            --error: #f56565;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            --bg-primary: #1a202c;
+            --bg-secondary: #2d3748;
+            --bg-tertiary: #4a5568;
+            --text-primary: #f7fafc;
+            --text-secondary: #e2e8f0;
+            --text-light: #a0aec0;
+            --border-color: #4a5568;
+            --card-bg: #2d3748;
+            --card-shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header & Navigation */
+        :root {
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --header-dark-bg: rgba(26, 32, 44, 0.95);
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .header {
+            background: var(--header-dark-bg);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        body.dark .header {
+            background: rgba(26, 32, 44, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            animation: gradientAnimation 15s ease infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--card-shadow);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 4px solid var(--bg-tertiary);
+            transition: all 0.3s ease;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-role {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Project Categories */
+        .projects-category {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Projects Section - Horizontal Scrolling Layout */
+        .projects-scroller {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .projects-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 1.5rem;
+            padding: 1rem 20px 2rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .projects-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+            max-width: 320px;
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            border: 1px solid var(--border-color);
+            transform: translateY(0);
+            z-index: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            z-index: 10;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            left: 100%;
+        }
+
+        .project-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Scroll indicators */
+        .scroll-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .scroll-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Updated About Me Section with Dual Timeline Paths */
+        .timeline-section {
+            display: flex;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .education-timeline, .experience-timeline {
+            flex: 1;
+            position: relative;
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            color: var(--text-primary);
+        }
+
+        .education-timeline .timeline-title {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .experience-timeline .timeline-title {
+            color: #764ba2;
+            border-bottom-color: #764ba2;
+        }
+
+        .timeline-path {
+            position: absolute;
+            top: 70px;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary-color);
+            left: 20px;
+            z-index: 0;
+        }
+
+        .education-timeline .timeline-path {
+            background: var(--primary-color);
+        }
+
+        .experience-timeline .timeline-path {
+            background: #764ba2;
+        }
+
+        .timeline-items {
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .education-timeline .timeline-marker {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.2);
+        }
+
+        .experience-timeline .timeline-marker {
+            background: #764ba2;
+            color: white;
+            box-shadow: 0 0 0 6px rgba(118, 75, 162, 0.2);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .education-timeline .timeline-date {
+            color: var(--primary-color);
+        }
+
+        .experience-timeline .timeline-date {
+            color: #764ba2;
+        }
+
+        .timeline-position {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Skills Section - Updated */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--card-shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--border-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--card-shadow);
+            z-index: 10;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-list li {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            flex: 1 0 auto;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        /* CERTIFICATES SECTION - HORIZONTAL SCROLLING */
+        .certs-marquee-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            padding: 2rem 0;
+        }
+
+        .certs-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+
+        .certs-marquee-container:hover .certs-marquee-track {
+            animation-play-state: paused;
+        }
+
+        .cert-card-wrapper {
+            display: inline-block;
+            width: 320px;
+            margin: 0 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--card-shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--border-color);
+            transform-origin: center;
+        }
+
+        .cert-card-wrapper:hover .cert-card {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px var(--card-shadow);
+            z-index: 10;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .cert-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .cert-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .cert-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-primary);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info-item i {
+            color: var(--primary-color);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item.animate-on-scroll {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                gap: 2rem;
+            }
+            
+            .about-content {
+                gap: 2rem;
+            }
+            
+            /* Show 2 projects at a time on tablets */
+            .project-card {
+                min-width: calc(50% - 1rem);
+                max-width: calc(50% - 1rem);
+            }
+
+            .timeline-section {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .timeline {
+                padding-left: 2rem;
+            }
+            
+            /* Projects layout for mobile */
+            .projects-container {
+                flex-direction: column;
+                overflow-x: visible;
+                gap: 2rem;
+            }
+            
+            .project-card {
+                min-width: 100%;
+                max-width: 100%;
+                scroll-snap-align: start;
+            }
+            
+            .projects-scroller {
+                overflow: visible;
+            }
+            
+            .scroll-indicators {
+                display: none;
+            }
+
+            /* Certificates mobile layout */
+            .certs-marquee-track {
+                animation: none;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 1rem;
+            }
+            
+            .cert-card-wrapper {
+                scroll-snap-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .footer-contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .timeline-marker {
+                width: 35px;
+                height: 35px;
+            }
+
+            .cert-card-wrapper {
+                width: 280px;
+            }
+            
+            .skill-list li {
+                min-width: 80px;
+                padding: 0.5rem 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                Dhruv Patil
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transforming Data into Strategic Value</h1>
+                <h2 class="hero-subtitle">Data Scientist | Business Analyst | Machine Learning Specialist</h2>
+                <p class="hero-description">
+                    I'm Dhruv Patil, a data-driven professional passionate about uncovering insights and building solutions that drive business growth. 
+                    With expertise in Python, machine learning, and data visualization, I turn complex data into actionable strategies.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-pic">
+                        <i class="fas fa-user-circle" style="font-size: 8rem;"></i>
+                    </div>
+                    <h2 class="profile-name">Dhruv Patil</h2>
+                    <p class="profile-role">Data Science & Analytics</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-kaggle"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section with Horizontal Scrolling -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Transforming data into actionable insights through innovative solutions</p>
+            </div>
+            
+            <!-- Masters Projects -->
+            <div class="projects-category">
+                <h3 class="category-title">Masters Projects</h3>
+                <div class="projects-scroller">
+                    <div class="projects-container" id="masters-projects">
+                        <!-- Project 1 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Sales Analytics Dashboard</h3>
+                                <p class="project-description">
+                                    Built an interactive Tableau dashboard analyzing sales performance across multiple regions, 
+                                    resulting in 15% increase in quarterly revenue through data-driven insights.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Tableau</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">SQL</span>
+                                    <span class="tag">Business Intelligence</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #667eea 100%);">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Customer Churn Prediction</h3>
+                                <p class="project-description">
+                                    Developed a machine learning model to predict customer churn with 92% accuracy, 
+                                    helping reduce customer attrition by 23% through targeted retention strategies.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Scikit-learn</span>
+                                    <span class="tag">XGBoost</span>
+                                    <span class="tag">Feature Engineering</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">E-commerce Recommendation System</h3>
+                                <p class="project-description">
+                                    Created a collaborative filtering recommendation engine that increased cross-selling 
+                                    revenue by 28% and improved customer engagement metrics significantly.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">TensorFlow</span>
+                                    <span class="tag">Collaborative Filtering</span>
+                                    <span class="tag">A/B Testing</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 4 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Predictive Maintenance System</h3>
+                                <p class="project-description">
+                                    Developed an ML model to predict equipment failures with 89% accuracy, reducing 
+                                    maintenance costs by 32% and preventing unexpected downtime.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Machine Learning</span>
+                                    <span class="tag">IoT</span>
+                                    <span class="tag">Time Series</span>
+                                    <span class="tag">Python</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 5 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Financial Risk Analysis</h3>
+                                <p class="project-description">
+                                    Created a comprehensive risk assessment model using ensemble methods to predict 
+                                    loan defaults with 94% accuracy, improving portfolio management decisions.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Finance</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Risk Analysis</span>
+                                    <span class="tag">Random Forest</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 6 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Multilingual Sentiment Analysis</h3>
+                                <p class="project-description">
+                                    Developed a transformer-based NLP model for sentiment analysis across 5 languages, 
+                                    achieving 88% accuracy on multilingual customer feedback datasets.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">NLP</span>
+                                    <span class="tag">Transformers</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">BERT</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-indicators" id="masters-indicators"></div>
+                </div>
+            </div>
+            
+            <!-- Bachelors Projects -->
+            <div class="projects-category">
+                <h3 class="category-title">Bachelors Projects</h3>
+                <div class="projects-scroller">
+                    <div class="projects-container" id="bachelors-projects">
+                        <!-- Project 1 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Social Media Sentiment Analysis</h3>
+                                <p class="project-description">
+                                    Built a sentiment analysis tool for social media data using NLP techniques, 
+                                    achieving 85% accuracy in emotion classification for brand monitoring.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">NLTK</span>
+                                    <span class="tag">Sentiment Analysis</span>
+                                    <span class="tag">Flask</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Traffic Flow Prediction System</h3>
+                                <p class="project-description">
+                                    Developed a time-series forecasting model to predict urban traffic flow, 
+                                    reducing average commute time by 18% during peak hours.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">LSTM</span>
+                                    <span class="tag">Time Series</span>
+                                    <span class="tag">Data Visualization</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Healthcare Patient Triage System</h3>
+                                <p class="project-description">
+                                    Created an ML-based triage system for prioritizing patient care, 
+                                    improving emergency room efficiency by 30% and reducing wait times.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Machine Learning</span>
+                                    <span class="tag">Scikit-learn</span>
+                                    <span class="tag">Healthcare</span>
+                                    <span class="tag">Data Analysis</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 4 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Student Performance Predictor</h3>
+                                <p class="project-description">
+                                    Developed a model to predict student academic outcomes based on demographic and behavioral factors, 
+                                    helping schools identify at-risk students early.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Education</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Logistic Regression</span>
+                                    <span class="tag">Data Mining</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 5 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #667eea 100%);">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Retail Inventory Optimization</h3>
+                                <p class="project-description">
+                                    Created an optimization algorithm to minimize inventory costs while maintaining 
+                                    99% product availability across retail locations.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Optimization</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Operations Research</span>
+                                    <span class="tag">Supply Chain</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 6 -->
+                        <div class="project-card animate-on-scroll">
+                            <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Restaurant Recommendation System</h3>
+                                <p class="project-description">
+                                    Built a content-based recommendation system for restaurant discovery 
+                                    using user preferences and location data, increasing engagement by 42%.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Recommendation System</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Content Filtering</span>
+                                    <span class="tag">Geospatial</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Kaggle">
+                                        <i class="fab fa-kaggle"></i>
+                                    </a>
+                                    <a href="#" class="project-link" title="Live Demo">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-indicators" id="bachelors-indicators"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Dual Timeline Design -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passionate about turning data into strategic business value</p>
+            </div>
+            
+            <div class="timeline-section animate-on-scroll">
+                <!-- Education Timeline -->
+                <div class="education-timeline">
+                    <h3 class="timeline-title">Education</h3>
+                    <div class="timeline-path"></div>
+                    <div class="timeline-items">
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-marker">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2020 - 2022</span>
+                                <h3 class="timeline-position">MSc in Data Science</h3>
+                                <div class="timeline-company">Stanford University</div>
+                                <p class="timeline-description">Specialized in Machine Learning and Business Analytics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-marker">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2016 - 2020</span>
+                                <h3 class="timeline-position">BSc in Computer Science</h3>
+                                <div class="timeline-company">MIT</div>
+                                <p class="timeline-description">Minor in Business Administration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Timeline -->
+                <div class="experience-timeline">
+                    <h3 class="timeline-title">Experience</h3>
+                    <div class="timeline-path"></div>
+                    <div class="timeline-items">
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-marker">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2022 - Present</span>
+                                <h3 class="timeline-position">Senior Data Scientist</h3>
+                                <div class="timeline-company">Tech Innovations Inc.</div>
+                                <p class="timeline-description">Leading data strategy and ML implementation for enterprise clients</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item animate-on-scroll">
+                            <div class="timeline-marker">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2020 - 2022</span>
+                                <h3 class="timeline-position">Business Analyst</h3>
+                                <div class="timeline-company">Global Solutions Group</div>
+                                <p class="timeline-description">Developed analytics frameworks for strategic decision-making</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - Updated -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Comprehensive toolkit for data science and business analytics</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-name">Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>R</li>
+                        <li>SQL</li>
+                        <li>JavaScript</li>
+                        <li>MATLAB</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="skill-name">Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>Scikit-learn</li>
+                        <li>TensorFlow</li>
+                        <li>PyTorch</li>
+                        <li>XGBoost</li>
+                        <li>Keras</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="skill-name">Data Visualization</h3>
+                    <ul class="skill-list">
+                        <li>Tableau</li>
+                        <li>Power BI</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                        <li>Plotly</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-name">Data Engineering</h3>
+                    <ul class="skill-list">
+                        <li>Apache Spark</li>
+                        <li>Hadoop</li>
+                        <li>MongoDB</li>
+                        <li>PostgreSQL</li>
+                        <li>ETL Pipelines</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="skill-name">Business Skills</h3>
+                    <ul class="skill-list">
+                        <li>Strategic Planning</li>
+                        <li>Process Optimization</li>
+                        <li>Stakeholder Management</li>
+                        <li>Project Leadership</li>
+                        <li>Financial Modeling</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="skill-name">Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Adaptability</li>
+                        <li>Problem Solving</li>
+                        <li>Communication</li>
+                        <li>Teamwork</li>
+                        <li>Critical Thinking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section - Horizontal Scrolling -->
+    <section class="section" id="certifications">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">Professional credentials validating expertise and commitment to excellence</p>
+            </div>
+            <div class="certs-marquee-container">
+                <div class="certs-marquee-track">
+                    <!-- Original Set -->
+                    <div class="cert-card-wrapper">
+                        <div class="cert-card">
+                            <div class="cert-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3 class="cert-title">AWS Certified Data Analytics</h3>
+                            <p class="cert-description">
+                                Specialized certification in designing and implementing AWS data analytics solutions, 
+                                covering data collection, storage, processing, and visualization.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card-wrapper">
+                        <div class="cert-card">
+                            <div class="cert-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h3 class="cert-title">Google Professional Data Engineer</h3>
+                            <p class="cert-description">
+                                Comprehensive certification covering data engineering on Google Cloud Platform, 
+                                including data processing systems, machine learning, and data analysis.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card-wrapper">
+                        <div class="cert-card">
+                            <div class="cert-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3 class="cert-title">Tableau Desktop Certified Professional</h3>
+                            <p class="cert-description">
+                                Advanced certification demonstrating expertise in creating complex visualizations, 
+                                advanced calculations, and dashboard design best practices.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicate Set -->
+                    <div class="cert-card-wrapper">
+                        <div class="cert-card">
+                            <div class="cert-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3 class="cert-title">AWS Certified Data Analytics</h3>
+                            <p class="cert-description">
+                                Specialized certification in designing and implementing AWS data analytics solutions, 
+                                covering data collection, storage, processing, and visualization.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card-wrapper">
+                        <div class="cert-card">
+                            <div class="cert-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h3 class="cert-title">Google Professional Data Engineer</h3>
+                            <p class="cert-description">
+                                Comprehensive certification covering data engineering on Google Cloud Platform, 
+                                including data processing systems, machine learning, and data analysis.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-card-wrapper">
+                        <div class="cert-card">
+                            <div class="cert-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3 class="cert-title">Tableau Desktop Certified Professional</h3>
+                            <p class="cert-description">
+                                Advanced certification demonstrating expertise in creating complex visualizations, 
+                                advanced calculations, and dashboard design best practices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://github.com/dhruvpatil" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/dhruvpatil" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://kaggle.com/dhruvpatil" target="_blank">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+                <a href="mailto:dhruv@example.com">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <div class="footer-contact-info">
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>dhruv.patil@example.com</span>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>San Francisco, CA</span>
+                </div>
+            </div>
+            
+            <div class="footer-text">
+                <p>&copy; 2025 Dhruv Patil. All rights reserved. Built with passion for data science and innovation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.toggle('dark', savedTheme === 'dark');
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            const isDark = body.classList.contains('dark');
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section, .hero');
+
+        // Update active nav link
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        function toggleScrollTopBtn() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        function checkScroll() {
+            animateElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        // Header background on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            // Always keep header solid in both modes
+            header.style.background = 'var(--header-bg)';
+            if (body.classList.contains('dark')) {
+                header.style.background = 'var(--header-dark-bg)';
+            }
+            
+            // Add shadow when scrolled
+            if (window.scrollY > 10) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Initialize scroll indicators
+        function setupScrollIndicators() {
+            const mastersContainer = document.getElementById('masters-projects');
+            const bachelorsContainer = document.getElementById('bachelors-projects');
+            const mastersIndicators = document.getElementById('masters-indicators');
+            const bachelorsIndicators = document.getElementById('bachelors-indicators');
+            
+            createIndicators(mastersContainer, mastersIndicators);
+            createIndicators(bachelorsContainer, bachelorsIndicators);
+            
+            // Update indicators on scroll
+            mastersContainer.addEventListener('scroll', () => updateIndicators(mastersContainer, mastersIndicators));
+            bachelorsContainer.addEventListener('scroll', () => updateIndicators(bachelorsContainer, bachelorsIndicators));
+        }
+        
+        function createIndicators(container, indicatorsContainer) {
+            const projectCards = container.querySelectorAll('.project-card');
+            if (projectCards.length === 0) return;
+            
+            // Calculate card width including gap (gap is 1.5rem = 24px)
+            const cardWidth = projectCards[0].offsetWidth + 24;
+            const groupSize = 1; // One card per indicator
+            const indicatorCount = Math.ceil(projectCards.length / groupSize);
+            
+            indicatorsContainer.innerHTML = '';
+            
+            for (let i = 0; i < indicatorCount; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'scroll-indicator';
+                if (i === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => {
+                    container.scrollTo({
+                        left: i * groupSize * cardWidth,
+                        behavior: 'smooth'
+                    });
+                });
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+        
+        function updateIndicators(container, indicatorsContainer) {
+            const projectCards = container.querySelectorAll('.project-card');
+            if (projectCards.length === 0) return;
+            
+            const cardWidth = projectCards[0].offsetWidth + 24;
+            const groupSize = 1; // One card per indicator
+            const scrollPosition = container.scrollLeft;
+            const indicators = indicatorsContainer.querySelectorAll('.scroll-indicator');
+            
+            if (indicators.length === 0) return;
+            
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Calculate active card index
+            const cardIndex = Math.round(scrollPosition / cardWidth);
+            if (cardIndex < indicators.length) {
+                indicators[cardIndex].classList.add('active');
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateActiveNav();
+            toggleScrollTopBtn();
+            checkScroll();
+        });
+
+        window.addEventListener('load', () => {
+            updateActiveNav();
+            checkScroll();
+            setupScrollIndicators();
+        });
+        
+        window.addEventListener('resize', setupScrollIndicators);
+    </script>
+</body>
+</html>
